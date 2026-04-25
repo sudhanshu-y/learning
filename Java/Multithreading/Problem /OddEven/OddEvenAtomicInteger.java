@@ -1,34 +1,38 @@
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class OddEvenSemaphore {
+public class OddEvenAtomicInteger {
 
     private int n;
-    private Semaphore oddSem = new Semaphore(1);  // start with odd
-    private Semaphore evenSem = new Semaphore(0); // even waits
+    private AtomicInteger status;
 
-    public OddEvenSemaphore(int n){
+    public OddEvenAtomicInteger(int n) {
         this.n = n;
+        status = new AtomicInteger(1);
     }
 
     public void odd() throws InterruptedException {
-        for(int i = 1; i <= n; i += 2){
-            oddSem.acquire();              // wait for turn
+        for (int i = 1; i <= n; i += 2) {
+            while (status.get() != 1) {
+                Thread.yield();
+            }
             System.out.print(i + " ");
-            evenSem.release();             // signal even thread
+            status.set(2);
         }
     }
 
     public void even() throws InterruptedException {
-        for(int i = 2; i <= n; i += 2){
-            evenSem.acquire();             // wait for turn
+        for (int i = 2; i <= n; i += 2) {
+            while (status.get() != 2) {
+                Thread.yield();
+            }
             System.out.print(i + " ");
-            oddSem.release();              // signal odd thread
+            status.set(1);
         }
     }
 
     public static void main(String[] args) {
 
-        OddEvenSemaphore oe = new OddEvenSemaphore(10);
+        OddEvenAtomicInteger oe = new OddEvenAtomicInteger(10);
 
         Thread t1 = new Thread(() -> {
             try {

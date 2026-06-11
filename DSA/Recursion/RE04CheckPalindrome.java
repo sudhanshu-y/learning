@@ -1,5 +1,5 @@
 // Check if a string is palindrome using recursion
-public class RE4CheckPalindrome {
+public class RE04CheckPalindrome {
 
     // Time Complexity: O(n)
     // Space Complexity: O(n)

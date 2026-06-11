@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class RE3ReverseArray {
+public class RE03ReverseArray {
 
     // Reverse array using recursion
     // Time Complexity: O(n)

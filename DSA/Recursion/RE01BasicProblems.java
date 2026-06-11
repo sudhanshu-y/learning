@@ -1,4 +1,4 @@
-public class RE1BasicProblems {
+public class RE01BasicProblems {
 
     // Print a string n times using recursion
     // Time Complexity: O(n)

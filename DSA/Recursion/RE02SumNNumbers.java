@@ -1,5 +1,5 @@
 // Sum of first N natural numbers using recursion
-public class RE2SumNNumbers {
+public class RE02SumNNumbers {
 
     // Parameterized recursion
     // Time Complexity: O(n)

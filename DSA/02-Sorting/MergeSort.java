@@ -13,7 +13,7 @@ public class MergeSort {
 
         int m = (l + r) / 2;
 
-        mergeSort(arr, l, m);
+        mergeSort(arr, l, m); // m included in first half
         mergeSort(arr, m + 1, r);
         
         merge(arr, l, m, r);
@@ -28,7 +28,7 @@ public class MergeSort {
 
         // Copy data
         for (int i = 0; i < n1; i++) L[i] = arr[l + i];
-        for (int j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
+        for (int j = 0; j < n2; j++) R[j] = arr[m + 1 + j]; // As m included in first half
 
         int i = 0, j = 0, k = l;
 

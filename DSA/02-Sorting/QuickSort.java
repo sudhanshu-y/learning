@@ -8,13 +8,13 @@ public class QuickSort {
         // pivot index is placed at correct sorted place
         int pivotIndex = partition(arr, left, right);
 
-        quickSort(arr, left, pivotIndex - 1);
-        quickSort(arr, pivotIndex + 1, right);
+        quickSort(arr, left, pivotIndex - 1);   // before pivot
+        quickSort(arr, pivotIndex + 1, right);  // after pivot
     }
 
     private static int partition(int[] arr, int left, int right) {
-        int pivot = arr[right];
-        int i = left - 1;
+        int pivot = arr[right]; // pivot element
+        int i = left - 1;   // pivot index
 
         for (int j = left; j < right; j++) {
             if (arr[j] < pivot) {
@@ -35,8 +35,8 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int[] arr = {8, 3, 1, 7, 0, 10, 2};
-
         System.out.println("Before sorting: " + Arrays.toString(arr));
+
         quickSort(arr, 0, arr.length - 1);
         System.out.println("After sorting:  " + Arrays.toString(arr));
     }
